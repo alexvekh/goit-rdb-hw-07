@@ -1,0 +1,11 @@
+use schema3;
+
+SELECT id, date, YEAR(date) as year, MONTH(date) as month, DAY(date) as day FROM schema3.orders;
+
+SELECT id, date, date + interval 1 day as added_1_day FROM schema3.orders;
+
+SELECT id, date, FLOOR(unix_timestamp(date)) as unix_date FROM schema3.orders;
+
+SELECT COUNT(*) FROM schema3.orders WHERE date between '1996-07-10 00:00:00' AND '1996-10-08 00:00:00';
+
+SELECT id, date, JSON_OBJECT('id', id, 'name', date) as JSON_object FROM schema3.orders;
